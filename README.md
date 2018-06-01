@@ -8,5 +8,5 @@ Yahoo! Open Local Platform(YOLP)の[気象情報API](https://developer.yahoo.co.
 herokuにデプロイして，heroku schedulerで10分間に1回起動するようにしたら便利。  
 詳細は暇な時にQiitaにでも書こうかな。
 
-## License
+### License
 MIT
