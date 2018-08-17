@@ -13,6 +13,7 @@ MIT
 
 ```bash
   $ cp .env.example .env
+  # edit `.env` file
   $ pip install -r requirements.txt
   $ python ameyadar.py
 ```
