@@ -1,4 +1,6 @@
 # Ameyadar
+以下、作者の方のREADME.
+
 ツイッターアカウント名に，京都大学上空の予想降水量に応じた絵文字を貼付する。
 
 Yahoo! Open Local Platform(YOLP)の[気象情報API](https://developer.yahoo.co.jp/webapi/map/openlocalplatform/v1/weather.html)を使ってます。  
