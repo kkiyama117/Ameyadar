@@ -44,6 +44,13 @@ def get_new_user_name(rainfall, old_name):
 
 
 def main(account: AccountEditor = TwitterAccountEditor()):
+    """ メインの関数
+
+    :usage: `main()` - defaultのアカウント(Twitter)が呼ばれる.
+            `main(account)` - AccountEditorに対応するアカウントが呼ばれる.
+                              AccountEditorそのものの場合標準出力のみ行う
+    :param account: AccountEditor class
+    """
     account.post_name(
         get_new_user_name(get_weather(), account.get_name()))
 
