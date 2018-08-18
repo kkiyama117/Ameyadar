@@ -8,7 +8,7 @@ import urllib.request
 from decouple import config
 from scipy.stats import norm
 
-from src.AccountManager import TwitterAccountEditor, AccountEditor
+from src.AccountEditor import TwitterAccountEditor, AccountEditor
 
 
 def get_weather():
@@ -49,7 +49,7 @@ def main(account: AccountEditor = TwitterAccountEditor()):
 
 
 if __name__ == '__main__':
-    from src.AccountManager import AccountEditor
+    from src.AccountEditor import AccountEditor
 
     my_account = AccountEditor()
     main(my_account)
