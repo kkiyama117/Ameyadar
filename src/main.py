@@ -8,7 +8,7 @@ import urllib.request
 from decouple import config
 from scipy.stats import norm
 
-from accounts.AccountEditor import TwitterAccountEditor, AccountEditor, \
+from src.accounts.AccountEditor import TwitterAccountEditor, AccountEditor, \
     MastodonAccountEditor
 
 
@@ -72,7 +72,3 @@ def main():
 
     account.post_name(
         get_new_user_name(get_weather(), account.get_name()))
-
-
-if __name__ == '__main__':
-    main()

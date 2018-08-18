@@ -31,7 +31,8 @@ MIT
 
 ### 動作確認
 ```bash
-  $ python ameyadar.py no_post
+  $ python ameyadar.py -h
+  $ python ameyadar.py no_service
 ```
 
 ### twitterで使う場合
