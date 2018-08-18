@@ -29,7 +29,6 @@ def get_weather():
 
 def get_twitter():
     # Twitter API
-
     twitter = OAuth1Session(config("CONSUMER_KEY"), config("CONSUMER_SECRET"),
                             config("ACCESS_TOKEN"),
                             config("ACCESS_TOKEN_SECRET"))
@@ -55,9 +54,12 @@ def get_new_user_name(rainfall, old_name):
 
 
 def rename_user(new_name):
-    # reqPost1 = twitter.post(
-    #     'https://api.twitter.com/1.1/account/update_profile.json?name=%s'
-    #     % newName)
+    twitter = OAuth1Session(config("CONSUMER_KEY"), config("CONSUMER_SECRET"),
+                            config("ACCESS_TOKEN"),
+                            config("ACCESS_TOKEN_SECRET"))
+    twitter.post(
+        'https://api.twitter.com/1.1/account/update_profile.json?name=%s'
+        % new_name)
     print("new name: " + new_name)
 
 
