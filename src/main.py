@@ -1,10 +1,14 @@
 # Libs
 # main
-import json, os, math, urllib.request
-from requests_oauthlib import OAuth1Session
-from scipy.stats import norm
-# devide config
+import json
+import math
+import urllib.request
+
+# divide config
 from decouple import config
+from scipy.stats import norm
+
+from src.AccountManager import AccountEditor
 
 
 def get_weather():
@@ -27,20 +31,6 @@ def get_weather():
     return rainfall
 
 
-def get_twitter():
-    # Twitter API
-    twitter = OAuth1Session(config("CONSUMER_KEY"), config("CONSUMER_SECRET"),
-                            config("ACCESS_TOKEN"),
-                            config("ACCESS_TOKEN_SECRET"))
-    return twitter
-
-
-def get_username(twitter):
-    req0 = twitter.get(
-        'https://api.twitter.com/1.1/account/verify_credentials.json')
-    return json.loads(req0.text)['name']
-
-
 def get_new_user_name(rainfall, old_name):
     rain_emoji = ['🌂', '🌦', '☂️', '🌧', '☔', '⛈', '🌀']
     emoji = ''
@@ -53,19 +43,13 @@ def get_new_user_name(rainfall, old_name):
     return old_name + emoji
 
 
-def rename_user(new_name):
-    twitter = OAuth1Session(config("CONSUMER_KEY"), config("CONSUMER_SECRET"),
-                            config("ACCESS_TOKEN"),
-                            config("ACCESS_TOKEN_SECRET"))
-    twitter.post(
-        'https://api.twitter.com/1.1/account/update_profile.json?name=%s'
-        % new_name)
-    print("new name: " + new_name)
-
-
-def main():
-    rename_user(get_new_user_name(get_weather(), get_username(get_twitter())))
+def main(my_account=AccountEditor()):
+    my_account.post_name(
+        get_new_user_name(get_weather(), my_account.get_name()))
 
 
 if __name__ == '__main__':
-    main()
+    from src.AccountManager import TwitterAccountEditor
+
+    account = TwitterAccountEditor()
+    main(account)
