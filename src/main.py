@@ -8,7 +8,8 @@ import urllib.request
 from decouple import config
 from scipy.stats import norm
 
-from accounts.AccountEditor import TwitterAccountEditor, AccountEditor
+from accounts.AccountEditor import TwitterAccountEditor, AccountEditor, \
+    MastodonAccountEditor
 
 
 def get_weather():
@@ -43,7 +44,7 @@ def get_new_user_name(rainfall, old_name):
     return old_name + emoji
 
 
-def main(account: AccountEditor = TwitterAccountEditor()):
+def main():
     """ メインの関数
 
     :usage: `main()` - defaultのアカウント(Twitter)が呼ばれる.
@@ -51,13 +52,27 @@ def main(account: AccountEditor = TwitterAccountEditor()):
                               AccountEditorそのものの場合標準出力のみ行う
     :param account: AccountEditor class
     """
+    import argparse
+    parser = argparse.ArgumentParser(
+        description='Change username with weather change')
+    parser.add_argument("service", nargs='?',
+                        help="default: twitter. "
+                             "You can use 'twitter', 'no_service, 'mastodon'.",
+                        default="twitter")
+    args = parser.parse_args()
+    if "twitter" in args.service:
+        account = TwitterAccountEditor()
+    elif "mastodon" in args.service:
+        # my_account = AccountEditor()
+        account = MastodonAccountEditor()
+    elif "no_service" in args.service:
+        account = AccountEditor()
+    else:
+        raise ValueError("You can't use this service")
+
     account.post_name(
         get_new_user_name(get_weather(), account.get_name()))
 
 
 if __name__ == '__main__':
-    from accounts.AccountEditor import AccountEditor, MastodonAccountEditor
-
-    # my_account = AccountEditor()
-    my_account = MastodonAccountEditor()
-    main(my_account)
+    main()
