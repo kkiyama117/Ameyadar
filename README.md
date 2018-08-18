@@ -9,11 +9,33 @@ Yahoo! Open Local Platform(YOLP)の[気象情報API](https://developer.yahoo.co.
 ## License
 MIT
 
-## Usage
+以下、追記
 
+## Dependents
+### 必須
+- python
+- pip
+- 利用するクライアントのAPI Key各種
+- Yahoo API
+### 推奨
+- virtualenv or venv
+
+## Usage
+### twitterで使う場合
 ```bash
   $ cp .env.example .env
   # edit `.env` file
   $ pip install -r requirements.txt
   $ python ameyadar.py
+```
+
+### mastodon
+```bash
+  $ cp .env.example .env
+  # edit `.env` file
+  $ pip install -r requirements.txt
+  # APIのKeyの取得を行う
+  $ python scripts/initialize_mastodon.py # 初回だけ実行して下さい
+  # data/mastodon/ フォルダが出来ていれば成功です
+  $ python ameyadar.py mastodon
 ```

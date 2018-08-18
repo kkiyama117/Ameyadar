@@ -1,3 +1,9 @@
+# mastodon
+Mastodon.py
+# Twitter
 requests_oauthlib
+# 計算
 scipy
+# 変数の分離
 python-decouple
+

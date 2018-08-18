@@ -56,7 +56,8 @@ def main(account: AccountEditor = TwitterAccountEditor()):
 
 
 if __name__ == '__main__':
-    from accounts.AccountEditor import AccountEditor
+    from accounts.AccountEditor import AccountEditor, MastodonAccountEditor
 
-    my_account = AccountEditor()
+    # my_account = AccountEditor()
+    my_account = MastodonAccountEditor()
     main(my_account)

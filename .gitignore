@@ -1,8 +1,9 @@
 # python
 .venv
 */__pycache__/
-# ENVIRONMENT FILE
+# DATA FILE
 .env
+data/mastodon/my_*cred.txt
 
 ###############################################################################
 # editor
