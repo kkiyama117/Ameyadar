@@ -21,19 +21,26 @@ MIT
 - virtualenv or venv
 
 ## Usage
-### twitterで使う場合
+
+### 前準備
 ```bash
   $ cp .env.example .env
   # edit `.env` file
   $ pip install -r requirements.txt
+```
+
+### 動作確認
+```bash
+  $ python ameyadar.py no_post
+```
+
+### twitterで使う場合
+```bash
   $ python ameyadar.py
 ```
 
 ### mastodon
 ```bash
-  $ cp .env.example .env
-  # edit `.env` file
-  $ pip install -r requirements.txt
   # APIのKeyの取得を行う
   $ python scripts/initialize_mastodon.py # 初回だけ実行して下さい
   # data/mastodon/ フォルダが出来ていれば成功です
