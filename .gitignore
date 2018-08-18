@@ -1,5 +1,6 @@
-# Virtualenv
+# python
 .venv
+*/__pycache__/
 # ENVIRONMENT FILE
 .env
 
