@@ -8,7 +8,7 @@ import urllib.request
 from decouple import config
 from scipy.stats import norm
 
-from src.AccountManager import TwitterAccountEditor
+from src.AccountManager import TwitterAccountEditor, AccountEditor
 
 
 def get_weather():
@@ -43,13 +43,13 @@ def get_new_user_name(rainfall, old_name):
     return old_name + emoji
 
 
-def main(my_account=TwitterAccountEditor()):
-    my_account.post_name(
-        get_new_user_name(get_weather(), my_account.get_name()))
+def main(account: AccountEditor = TwitterAccountEditor()):
+    account.post_name(
+        get_new_user_name(get_weather(), account.get_name()))
 
 
 if __name__ == '__main__':
     from src.AccountManager import AccountEditor
 
-    account = AccountEditor()
-    main(account)
+    my_account = AccountEditor()
+    main(my_account)
