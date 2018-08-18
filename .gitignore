@@ -1,6 +1,6 @@
 # python
 .venv
-*/__pycache__/
+*__pycache__/
 # DATA FILE
 .env
 data/mastodon/my_*cred.txt
