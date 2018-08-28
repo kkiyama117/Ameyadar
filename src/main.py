@@ -10,14 +10,15 @@ from src.weather.yahoo import get_weather
 
 def get_new_user_name(rainfall, old_name):
     rain_emoji = ['🌂', '🌦', '☂️', '🌧', '☔', '⛈', '🌀']
-    emoji = ''
+    new_emoji = ''
 
     if rainfall != 0:
         cubed = min(math.ceil(math.log(math.ceil(rainfall), 3)), 6)
-        emoji = rain_emoji[int(cubed)]
+        new_emoji = rain_emoji[int(cubed)]
     for emoji in rain_emoji:
-        old_name = old_name.replace(emoji, "")
-    return old_name + emoji
+        if emoji in old_name:
+            old_name = old_name.replace(emoji, "")
+    return old_name + new_emoji
 
 
 def main():
@@ -44,6 +45,9 @@ def main():
         account = MastodonAccountEditor()
     elif "no_service" in args.service:
         account = AccountEditor()
+    elif "test" in args.service:
+        account = AccountEditor()
+        print(get_new_user_name(3, "test"))
     else:
         raise ValueError("You can't use this service")
 
