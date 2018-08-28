@@ -8,6 +8,8 @@ from requests_oauthlib import OAuth1Session
 
 
 class AccountEditor:
+    """Account用Interface 兼 動作確認の出来るモック
+    """
     def __init__(self):
         self.name = "default"
 

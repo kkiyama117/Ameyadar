@@ -6,4 +6,5 @@ requests_oauthlib
 scipy
 # 変数の分離
 python-decouple
-
+# http
+requests

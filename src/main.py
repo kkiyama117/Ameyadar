@@ -1,35 +1,11 @@
 # Libs
 # main
-import json
 import math
-import urllib.request
 
-# divide config
-from decouple import config
-from scipy.stats import norm
-
+# local files import
 from src.accounts.AccountEditor import TwitterAccountEditor, AccountEditor, \
     MastodonAccountEditor
-
-
-def get_weather():
-    # Yahoo API
-    YAHOO_APP_ID = config("YAHOO_APP_ID")
-
-    COORDINATES = '135.7849,35.02799'  # longitude and latitude of KU
-
-    RAIN_URL_BASE = 'https://map.yahooapis.jp/weather/V1/place?coordinates=%s' \
-                    '&appid=%s&output=json&interval=10'
-    rain_url = RAIN_URL_BASE % (COORDINATES, YAHOO_APP_ID)
-    content = json.loads(
-        urllib.request.urlopen(rain_url).read().decode('utf-8'))
-    rainfall = 0
-    for var in range(7):
-        x = norm.pdf(var, 0, 5) / norm.pdf(0, 0, 5)
-        y = content['Feature'][0]['Property']['WeatherList']['Weather'][var][
-            'Rainfall']
-        rainfall += x * y
-    return rainfall
+from src.weather.yahoo import get_weather
 
 
 def get_new_user_name(rainfall, old_name):
@@ -47,6 +23,8 @@ def get_new_user_name(rainfall, old_name):
 def main():
     """ メインの関数
 
+    argparce によってコマンドラインの変数の取得を行う
+
     :usage: `main()` - defaultのアカウント(Twitter)が呼ばれる.
             `main(account)` - AccountEditorに対応するアカウントが呼ばれる.
                               AccountEditorそのものの場合標準出力のみ行う
@@ -63,7 +41,6 @@ def main():
     if "twitter" in args.service:
         account = TwitterAccountEditor()
     elif "mastodon" in args.service:
-        # my_account = AccountEditor()
         account = MastodonAccountEditor()
     elif "no_service" in args.service:
         account = AccountEditor()
