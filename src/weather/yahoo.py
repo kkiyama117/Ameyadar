@@ -19,12 +19,13 @@ def get_weather():
     rainfall = 0
     for var in range(7):
         x = norm.pdf(var, 0, 5) / norm.pdf(0, 0, 5)
+        # mm/h
         y = content['Feature'][0]['Property']['WeatherList']['Weather'][var][
             'Rainfall']
+        # 過去の雨量を足す
         rainfall += x * y
     return rainfall
 
 
 if __name__ == '__main__':
-    print(get_weather()
-          )
+    print(get_weather())

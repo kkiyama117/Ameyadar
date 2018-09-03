@@ -15,6 +15,8 @@ def get_new_user_name(rainfall, old_name):
     if rainfall != 0:
         cubed = min(math.ceil(math.log(math.ceil(rainfall), 3)), 6)
         new_emoji = rain_emoji[int(cubed)]
+    else:
+        new_emoji="☀"
     for emoji in rain_emoji:
         if emoji in old_name:
             old_name = old_name.replace(emoji, "")
