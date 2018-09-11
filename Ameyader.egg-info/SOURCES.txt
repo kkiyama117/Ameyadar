@@ -1,0 +1,7 @@
+README.txt
+setup.py
+Ameyader.egg-info/PKG-INFO
+Ameyader.egg-info/SOURCES.txt
+Ameyader.egg-info/dependency_links.txt
+Ameyader.egg-info/requires.txt
+Ameyader.egg-info/top_level.txt
