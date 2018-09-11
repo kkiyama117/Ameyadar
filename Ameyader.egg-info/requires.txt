@@ -1,6 +1,0 @@
-Mastodon.py
-requests
-scipy
-python-decouple
-requests
-requests_oauthlib

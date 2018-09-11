@@ -5,6 +5,11 @@
 .env
 data/mastodon/my_*cred.txt
 
+# compiled files
+*.egg-info/
+dist/
+build/
+
 ###############################################################################
 # editor
 .idea
