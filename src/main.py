@@ -3,8 +3,9 @@
 import math
 
 # local files import
-from src.accounts.AccountEditor import TwitterAccountEditor, AccountEditor, \
-    MastodonAccountEditor
+from src.accounts.mastodon import MastodonAccountEditor
+from src.accounts.twitter import TwitterAccountEditor
+from src.accounts.account import AccountEditor
 from src.weather.yahoo import get_weather
 
 
@@ -16,7 +17,7 @@ def get_new_user_name(rainfall, old_name):
         cubed = min(math.ceil(math.log(math.ceil(rainfall), 3)), 6)
         new_emoji = rain_emoji[int(cubed)]
     else:
-        new_emoji="☀"
+        new_emoji = "☀"
     for emoji in rain_emoji:
         if emoji in old_name:
             old_name = old_name.replace(emoji, "")
